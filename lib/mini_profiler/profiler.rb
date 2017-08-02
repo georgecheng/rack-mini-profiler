@@ -339,7 +339,7 @@ module Rack
         @storage.set_unviewed(page_struct[:user], page_struct[:id])
 
         # inject headers, script
-        if status >= 200 && status < 300
+        if status.to_i >= 200 && status.to_i < 300
           result = inject_profiler(env,status,headers,body)
           return client_settings.handle_cookie(result) if result
         end
